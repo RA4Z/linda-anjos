@@ -3,10 +3,40 @@ import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
 import TileLayer from 'ol/layer/Tile.js';
 import View from 'ol/View.js';
+import { Feature } from 'ol';
+import { Point } from 'ol/geom';
+import VectorSource from 'ol/source/Vector';
+import VectorLayer from 'ol/layer/Vector';
+import Style from 'ol/style/Style';
+import MarkerIMG from 'assets/marker.png'
+import Icon from 'ol/style/Icon';
 
 export default function Maps() {
     const mapContainer = useRef<HTMLDivElement>(null); // Defina o tipo da ref como HTMLDivElement
     const [map, setMap] = useState<Map | null>(null); // Defina o tipo do estado map como Map | null
+
+    const iconFeature = new Feature({
+        geometry: new Point([-49.0838938, -26.4042748]),
+        name: 'Academia Body Evolution',
+        population: 4000,
+        rainfall: 500,
+    });
+
+    const iconStyle = new Style({
+        image: new Icon({
+            anchor: [0.5, 46],
+            width: 25,
+            height: 25,
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: MarkerIMG,
+        }),
+    });
+    iconFeature.setStyle(iconStyle);
+
+    const vectorSource = new VectorSource({
+        features: [iconFeature],
+    });
 
     useEffect(() => {
         if (!map && mapContainer.current) {
@@ -16,12 +46,15 @@ export default function Maps() {
                     new TileLayer({
                         source: new OSM(),
                     }),
+                    new VectorLayer({
+                        source: vectorSource,
+                    })
                 ],
                 view: new View({
                     projection: 'EPSG:4326',
                     center: [-49.0838538, -26.4044748], // Converta as coordenadas para usar longitude e latitude
                     zoom: 18, // Defina o nível de zoom
-                }),
+                })
             });
             setMap(newMap);
         }
