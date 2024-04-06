@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    color: black;
+    font-weight: bold;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 5px 5px 7px #191919;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    img {
+        height: 68px;
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            filter: saturate(2) drop-shadow(2px 2px 2px black);
+        }
+    }
+}
