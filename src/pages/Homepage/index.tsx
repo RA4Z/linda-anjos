@@ -7,7 +7,16 @@ export default function Homepage() {
             <h2>Homepage</h2>
 
             <div className={styles.container__mapa}>
-                <Maps />
+                <div className={styles.container__mapa__header}>
+                    <div className={styles.container__mapa__dados}>
+                        <li>Schroeder, Santa Catarina, Brasil</li>
+                        <li>Rua Marechal Castelo Branco</li>
+                        <li>4456, Centro Norte, CEP 89275-000</li>
+                    </div>
+                    <div className={styles.container__mapa__body}>
+                        <Maps />
+                    </div>
+                </div>
             </div>
         </div>
     )
