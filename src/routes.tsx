@@ -6,6 +6,8 @@ import DefaultPage from 'components/DefaultPage';
 
 const HomePage = lazy(() => import('pages/Homepage'))
 const NotFound = lazy(() => import('pages/NotFound'))
+const Login = lazy(() => import('pages/Login'))
+const Admin = lazy(() => import('pages/Admin'))
 
 export default function AppRouter() {
   return (
@@ -17,6 +19,8 @@ export default function AppRouter() {
           <Routes>
             <Route path='/' element={<DefaultPage />}>
               <Route index element={<HomePage />} />
+              <Route path='/Admin' element={<Admin />} />
+              <Route path='/Login' element={<Login />} />
               <Route path='*' element={<NotFound />} />
             </Route>
           </Routes>

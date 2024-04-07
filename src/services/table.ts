@@ -11,3 +11,4 @@ export async function getData(database: string, setDados: any, setBackup: any) {
     setBackup(dados)
     return dados;
 }
+
