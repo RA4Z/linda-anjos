@@ -49,7 +49,7 @@
 
 		&:hover {
 			cursor: pointer;
-			filter: saturate(1.2) drop-shadow(2px 2px 2px $shadow);	
+			filter: saturate(1.2) drop-shadow(2px 2px 2px $shadow);
 		}
 
 		&:active {
@@ -61,16 +61,6 @@
 		}
 	}
 
-	form {
-		background-color: #FFFFFF;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 50px;
-		height: 100%;
-		text-align: center;
-	}
 
 	input {
 		background-color: #eee;
@@ -90,6 +80,17 @@ button.ghost {
 	&:hover {
 		filter: saturate(2) drop-shadow(2px 2px 2px $shadow);
 	}
+}
+
+.formulario {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
 }
 
 .container {
