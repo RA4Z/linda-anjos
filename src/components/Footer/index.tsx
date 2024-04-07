@@ -5,8 +5,31 @@ import Logo from 'assets/logo.svg'
 import facebook from 'assets/facebook.svg'
 import instagram from 'assets/instagram.svg'
 import linkedin from 'assets/linkedin.svg'
+import { logoff } from 'services/auth'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { supabase } from 'config/supabase'
+import BotaoHover from 'components/BotaoHover'
 
 export default function Footer() {
+    const navigate = useNavigate()
+    const [user, setUser] = useState('')
+
+    useEffect(() => {
+        async function getUserLogged() {
+            const user = (await supabase.auth.getUser()).data.user?.email
+            if (user !== '' && user !== undefined) {
+                if (user === 'rvtech@tech.com') setUser(user)
+            }
+        }
+        getUserLogged()
+    }, [])
+
+    async function logout() {
+        await logoff()
+        setUser('')
+        navigate('/Login')
+    }
     return (
         <>
             <div className={styles.container}>
@@ -15,6 +38,7 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.container__dev}>
+                    {user !== '' && <BotaoHover text='Deslogar' onClick={() => logout()} />}
 
                     <button className={styles.container__button}>Default Webpage</button>
                     <Divider style={{ background: 'white' }} />

@@ -15,6 +15,8 @@ export default function Admin() {
     }, [navigate])
 
     return (
-        <h1>Adm. Window</h1>
+        <>
+            <h1>Adm. Window</h1>
+        </>
     )
 }
