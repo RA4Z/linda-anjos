@@ -1,10 +1,13 @@
 import Maps from 'components/Maps'
 import styles from './Homepage.module.scss'
+import Whatsapp from 'components/Whatsapp'
 
 export default function Homepage() {
     return (
         <div className={styles.container}>
             <h2>Homepage</h2>
+            
+            <Whatsapp />
 
             <div className={styles.container__mapa}>
                 <div className={styles.container__mapa__header}>
