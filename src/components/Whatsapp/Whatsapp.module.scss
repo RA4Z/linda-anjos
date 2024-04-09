@@ -1,0 +1,26 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 15px;
+    gap: 10px;
+    padding: 15px;
+    cursor: pointer;
+    background-color: green;
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    transition: .2s;
+
+    img {
+        height: 32px;
+    }
+
+    &:hover {
+        filter: saturate(1) drop-shadow(2px 2px 2px $shadow);
+    }
+}

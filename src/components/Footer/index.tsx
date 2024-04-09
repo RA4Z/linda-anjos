@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { supabase } from 'config/supabase'
 import BotaoHover from 'components/BotaoHover'
+import Whatsapp from 'components/Whatsapp'
 
 export default function Footer() {
     const navigate = useNavigate()
@@ -38,6 +39,8 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.container__dev}>
+                    <Whatsapp />
+
                     {user !== '' && <BotaoHover text='Deslogar' onClick={() => logout()} />}
 
                     <button className={styles.container__button}>Default Webpage</button>

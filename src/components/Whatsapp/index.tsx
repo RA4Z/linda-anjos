@@ -1,3 +1,6 @@
+import styles from './Whatsapp.module.scss'
+import WhatsappIMG from 'assets/whatsapp.svg'
+
 export default function Whatsapp() {
   const mensagem = encodeURIComponent('Mensagem default que está inserida no software brabo desenvolvido pelo RV Tech');
 
@@ -13,6 +16,9 @@ export default function Whatsapp() {
   };
 
   return (
-    <button onClick={handleWhatsappButtonClick}>Enviar mensagem pelo WhatsApp</button>
+    <div className={styles.button} onClick={handleWhatsappButtonClick}>
+      <img src={WhatsappIMG} alt='Ícone do Whatsapp' />
+      <span>WhatsApp</span>
+    </div>
   );
 }
