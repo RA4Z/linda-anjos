@@ -8,6 +8,7 @@ import InputBox from "components/InputBox"
 import styles from './Admin.module.scss'
 import BotaoHover from "components/BotaoHover"
 import { insertData } from "services/table"
+import { algumCampoVazio } from "utils"
 
 export default function Admin() {
     const navigate = useNavigate()
@@ -24,6 +25,8 @@ export default function Admin() {
     }, [navigate])
 
     async function cadastrar() {
+        if (algumCampoVazio(data)) return alert('Por favor, preencha todos os campos antes de realizar o cadastro.');
+
         const result = await insertData('Basic_Database', data)
         if (result === 'success') {
             alert('Cadastrado com sucesso!')
