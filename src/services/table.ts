@@ -16,7 +16,7 @@ export async function getData(database: string, setDados: any, setBackup: any) {
 export async function insertData(database: string, data: DatabaseType) {
     const { error } = await supabase
         .from(database)
-        .insert([data])
+        .insert([{ problema: data.problema }])
         .select()
     if (error) return error
     return 'success'

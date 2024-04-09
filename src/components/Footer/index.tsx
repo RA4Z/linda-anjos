@@ -40,7 +40,6 @@ export default function Footer() {
 
                 <div className={styles.container__dev}>
                     <Whatsapp />
-
                     {user !== '' && <BotaoHover text='Deslogar' onClick={() => logout()} />}
 
                     <button className={styles.container__button}>Default Webpage</button>

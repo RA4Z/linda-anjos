@@ -1,0 +1,19 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    min-height: 50vh;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+}
