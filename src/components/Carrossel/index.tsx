@@ -36,7 +36,7 @@ export default function Carrossel() {
                 emulateTouch={true}>
 
                 {slides.map(slide => (
-                    <div key={slide.title}>
+                    <div key={slide.title} className={styles.item}>
                         <div>
                             <img src={slide.image} alt={slide.title} />
                         </div>
