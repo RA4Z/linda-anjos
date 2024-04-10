@@ -1,0 +1,10 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.container {
+    width: 60%;
+
+    @media(max-width: $tablet) {
+        width: 100%;
+    }
+}

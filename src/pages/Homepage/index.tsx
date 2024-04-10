@@ -1,11 +1,13 @@
 import Maps from 'components/Maps'
 import styles from './Homepage.module.scss'
+import Carrossel from 'components/Carrossel'
 
 export default function Homepage() {
     return (
         <div className={styles.container}>
-            <h2>Homepage</h2>
-
+            <div className={styles.carousel}>
+                <Carrossel />
+            </div>
             <div className={styles.container__mapa}>
                 <div className={styles.container__mapa__header}>
                     <div className={styles.container__mapa__dados}>
