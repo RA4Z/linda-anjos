@@ -10,10 +10,16 @@ export default function Header() {
         if (location.pathname !== '/') navigate('/')
     }
     return (
-        <div className={styles.container}>
+        <nav className={styles.container}>
             <button onClick={() => navigateHome()} title='Navegar para a Homepage'>
                 <img src={Logotipo} alt='Logo da Weg' />
             </button>
-        </div>
+            <ul>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/'>Catálogo</a></li>
+                <li><a href='/'>Contato</a></li>
+                <li><a href='/'>Sobre nós</a></li>
+            </ul>
+        </nav>
     )
 }
