@@ -34,8 +34,21 @@
         right: 0;
         display: flex;
 
+        .hamburguer {
+            display: none;
+            padding-right: 15px;
+
+            @media(max-width:$mobile) {
+                display: block;
+            }
+        }
+
         li {
             list-style: none;
+
+            @media(max-width:$mobile) {
+                display: none;
+            }
 
             a {
                 position: relative;
