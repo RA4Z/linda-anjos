@@ -15,30 +15,27 @@ export default function Maps() {
     const mapContainer = useRef<HTMLDivElement>(null); // Defina o tipo da ref como HTMLDivElement
     const [map, setMap] = useState<Map | null>(null); // Defina o tipo do estado map como Map | null
 
-    const iconFeature = new Feature({
-        geometry: new Point([-49.0838938, -26.4042748]),
-        name: 'Academia Body Evolution',
-        population: 4000,
-        rainfall: 500,
-    });
-
-    const iconStyle = new Style({
-        image: new Icon({
-            anchor: [0.5, 46],
-            width: 25,
-            height: 25,
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: MarkerIMG,
-        }),
-    });
-    iconFeature.setStyle(iconStyle);
-
-    const vectorSource = new VectorSource({
-        features: [iconFeature],
-    });
-
     useEffect(() => {
+        const iconFeature = new Feature({
+            geometry: new Point([-49.0838938, -26.4042748]),
+            name: 'Academia Body Evolution',
+            population: 4000,
+            rainfall: 500,
+        });
+
+        const iconStyle = new Style({
+            image: new Icon({
+                anchor: [0.5, 46],
+                width: 25,
+                height: 25,
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'pixels',
+                src: MarkerIMG,
+            }),
+        });
+
+        iconFeature.setStyle(iconStyle);
+
         if (!map && mapContainer.current) {
             const newMap = new Map({
                 target: mapContainer.current,
@@ -47,7 +44,9 @@ export default function Maps() {
                         source: new OSM(),
                     }),
                     new VectorLayer({
-                        source: vectorSource,
+                        source: new VectorSource({
+                            features: [iconFeature],
+                        }),
                     })
                 ],
                 view: new View({
