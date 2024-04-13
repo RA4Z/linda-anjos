@@ -1,82 +1,88 @@
 import * as React from 'react';
 import {
-    Unstable_NumberInput as BaseNumberInput,
-    NumberInputProps,
+  Unstable_NumberInput as BaseNumberInput,
+  NumberInputProps,
 } from '@mui/base/Unstable_NumberInput';
 import { styled } from '@mui/system';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
 const NumberInput = React.forwardRef(function CustomNumberInput(
-    props: NumberInputProps,
-    ref: React.ForwardedRef<HTMLDivElement>,
+  props: NumberInputProps,
+  ref: React.ForwardedRef<HTMLDivElement>,
 ) {
-    return (
-        <BaseNumberInput
-            slots={{
-                root: StyledInputRoot,
-                input: StyledInput,
-                incrementButton: StyledButton,
-                decrementButton: StyledButton,
-            }}
-            slotProps={{
-                incrementButton: {
-                    children: <AddIcon fontSize="small" />,
-                    className: 'increment',
-                },
-                decrementButton: {
-                    children: <RemoveIcon fontSize="small" />,
-                },
-            }}
-            {...props}
-            ref={ref}
-        />
-    );
+  return (
+    <BaseNumberInput
+      slots={{
+        root: StyledInputRoot,
+        input: StyledInput,
+        incrementButton: StyledButton,
+        decrementButton: StyledButton,
+      }}
+      slotProps={{
+        incrementButton: {
+          children: <AddIcon fontSize="small" />,
+          className: 'increment',
+        },
+        decrementButton: {
+          children: <RemoveIcon fontSize="small" />,
+        },
+      }}
+      {...props}
+      ref={ref}
+    />
+  );
 });
 
 interface Props {
-    items: any
-    quantity: number;
-    setQuantity: any;
+  items: any
+  quantity: number;
+  setQuantity: any;
 }
 export default function SelectNumber(props: Props) {
-    return <NumberInput
-        aria-label="Quantity Input"
-        min={1}
-        max={99}
-        onChange={(event, newValue) => {
-            props.setQuantity({ ...props.items, quantity: newValue });
-        }}
-        value={props.quantity}
-    />
+  return (
+    <NumberInput
+      aria-label="Quantity Input"
+      min={1}
+      max={99}
+      onChange={(_, newValue) => {
+        props.setQuantity({ ...props.items, quantity: newValue });
+      }}
+      value={props.quantity}
+      style={{
+        display: 'flex',
+        flexDirection:'column-reverse',
+        width: '17%',
+      }}
+    />)
 }
 
 const blue = {
-    100: '#daecff',
-    200: '#b6daff',
-    300: '#66b2ff',
-    400: '#3399ff',
-    500: '#007fff',
-    600: '#0072e5',
-    700: '#0059B2',
-    800: '#004c99',
+  100: '#daecff',
+  200: '#b6daff',
+  300: '#66b2ff',
+  400: '#3399ff',
+  500: '#007fff',
+  600: '#0072e5',
+  700: '#0059B2',
+  800: '#004c99',
 };
 
 const grey = {
-    50: '#F3F6F9',
-    100: '#E5EAF2',
-    200: '#DAE2ED',
-    300: '#C7D0DD',
-    400: '#B0B8C4',
-    500: '#9DA8B7',
-    600: '#6B7A90',
-    700: '#434D5B',
-    800: '#303740',
-    900: '#1C2025',
+  50: '#F3F6F9',
+  100: '#E5EAF2',
+  200: '#DAE2ED',
+  300: '#C7D0DD',
+  400: '#B0B8C4',
+  500: '#9DA8B7',
+  600: '#6B7A90',
+  700: '#434D5B',
+  800: '#303740',
+  900: '#1C2025',
 };
 
 const StyledInputRoot = styled('div')(
-    ({ theme }) => `
+  ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[500]};
@@ -88,7 +94,7 @@ const StyledInputRoot = styled('div')(
 );
 
 const StyledInput = styled('input')(
-    ({ theme }) => `
+  ({ theme }) => `
   font-size: 0.875rem;
   font-family: inherit;
   font-weight: 400;
@@ -97,13 +103,11 @@ const StyledInput = styled('input')(
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
   box-shadow: 0px 2px 4px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
-        };
+    };
   border-radius: 8px;
-  margin: 0 8px;
-  padding: 10px 12px;
   outline: 0;
   min-width: 0;
-  width: 4rem;
+  width: 2rem;
   text-align: center;
 
   &:hover {
@@ -122,7 +126,7 @@ const StyledInput = styled('input')(
 );
 
 const StyledButton = styled('button')(
-    ({ theme }) => `
+  ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
@@ -132,8 +136,6 @@ const StyledButton = styled('button')(
   border-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
   background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
   color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
-  width: 32px;
-  height: 32px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;

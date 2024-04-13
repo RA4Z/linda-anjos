@@ -63,8 +63,10 @@ export default function Carrinho() {
                 <div className={styles.items__container}>{items.map((item, index) => (
                     <div key={index}>
                         <div className={styles.item}>
-                            <img className={styles.item__produto} src={item.image} alt='Imagem' />
-                            <li className={styles.item__title}>{item.title}</li>
+                            <div className={styles.item__principal}>
+                                <img className={styles.item__produto} src={item.image} alt='Imagem' />
+                                <li className={styles.item__title}>{item.title}</li>
+                            </div>
                             <SelectNumber
                                 items={item}
                                 quantity={item.quantity}
