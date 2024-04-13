@@ -10,15 +10,18 @@
     box-shadow: 1px 1px 5px #555353;
     margin: 0 auto;
 
-    @media(max-width: $tablet) {
+    @media(max-width: $tablet_big) {
         flex-direction: column;
+    }
+
+    @media(max-width: $tablet) {
+        width: 100vw;
     }
 }
 
 .items {
     display: flex;
     flex-direction: column;
-    width: 70%;
     align-items: center;
     padding: 10px;
 
@@ -28,6 +31,7 @@
         width: 100%;
         align-items: center;
         justify-content: space-around;
+        text-align: center;
 
         h1 {
             color: $primary;
@@ -40,6 +44,7 @@
 
     &__container {
         padding: 10px;
+        overflow: auto;
     }
 }
 
@@ -61,7 +66,7 @@
     }
 
     &__produto {
-        height: 100px;
+        width: 10vw;
     }
 
     &__delete {
@@ -72,6 +77,10 @@
         &:hover {
             filter: saturate(2) drop-shadow(.5px .5px .5px $shadow);
         }
+    }
+
+    @media(max-width: $tablet_big) {
+        width: 100%;
     }
 }
 
@@ -92,4 +101,3 @@
         }
     }
 }
-

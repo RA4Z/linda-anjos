@@ -30,13 +30,34 @@ export default function Carrinho() {
             unityValue: 25,
             value: 1500,
         },
+        {
+            image: IMG1,
+            title: 'Red Dead Redemption 2',
+            quantity: 1,
+            unityValue: 200,
+            value: 200,
+        },
+        {
+            image: IMG2,
+            title: 'Devil May Cry',
+            quantity: 6,
+            unityValue: 59,
+            value: 354,
+        },
+        {
+            image: IMG3,
+            title: 'Uncharted',
+            quantity: 60,
+            unityValue: 25,
+            value: 1500,
+        },
     ])
     return (
         <div className={styles.container}>
             <div className={styles.items}>
                 <div className={styles.items__title}>
-                    <h1>Shopping Cart</h1>
-                    <h4>3 items</h4>
+                    <h1>Carrinho de Compras</h1>
+                    <h4>{items.length} {items.length > 1 ? 'itens' : 'item'}</h4>
                 </div>
                 <Divider style={{ width: '100%' }} />
                 <div className={styles.items__container}>{items.map((item, index) => (
