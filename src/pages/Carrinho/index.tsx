@@ -76,7 +76,13 @@ export default function Carrinho() {
                                 }}
                             />
                             <li style={{ width: '10%' }}>{item.value}R$</li>
-                            <img className={styles.item__delete} src={Fechar} alt='Excluir do carrinho' />
+                            <img className={styles.item__delete} src={Fechar} alt='Excluir do carrinho'
+                                onClick={() => {
+                                    const carrinho = [...items];
+                                    carrinho.splice(index, 1); // Remove o item do carrinho
+                                    setItems(carrinho); // Atualiza o estado do carrinho
+                                }}
+                            />
                         </div>
                         <Divider style={{ width: '100%' }} />
                     </div>
