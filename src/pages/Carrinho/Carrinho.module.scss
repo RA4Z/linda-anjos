@@ -5,13 +5,14 @@
     display: flex;
     justify-content: space-between;
     width: 80vw;
-    height: 100vh;
+    height: 80vh;
     border-radius: 20px;
     box-shadow: 1px 1px 5px #555353;
     margin: 0 auto;
 
     @media(max-width: $tablet_big) {
         flex-direction: column;
+        height: 150vh;
     }
 
     @media(max-width: $tablet) {
