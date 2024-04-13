@@ -17,6 +17,9 @@ export default function Whatsapp({ message }: Props) {
 
     // Abrir o link no WhatsApp Web
     window.open(linkWhatsapp, '_blank');
+
+    // Deletar itens no carrinho
+    localStorage.setItem('items', JSON.stringify([]));
   };
 
   return (
