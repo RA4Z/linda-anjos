@@ -1,3 +1,4 @@
+import ProductCard from 'components/ProductCard';
 import { useEffect, useState } from 'react'
 import { CarrinhoType } from 'types/sistema'
 
@@ -19,6 +20,7 @@ export default function Catalogo() {
             {items.map(item => (
                 <li>{item.title}</li>
             ))}
+            <ProductCard />
         </div>
     )
 }
