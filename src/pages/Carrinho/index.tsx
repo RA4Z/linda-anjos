@@ -19,6 +19,7 @@ export default function Carrinho() {
     function recuperar() {
         setItems([
             {
+                id:1,
                 image: IMG1,
                 title: 'Red Dead Redemption 2',
                 quantity: 1,
@@ -26,6 +27,7 @@ export default function Carrinho() {
                 value: 200,
             },
             {
+                id:2,
                 image: IMG2,
                 title: 'Devil May Cry',
                 quantity: 6,
@@ -33,6 +35,7 @@ export default function Carrinho() {
                 value: 354,
             },
             {
+                id:3,
                 image: IMG3,
                 title: 'Uncharted',
                 quantity: 60,

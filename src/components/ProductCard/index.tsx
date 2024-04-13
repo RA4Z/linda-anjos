@@ -5,13 +5,32 @@ import Info from 'assets/info.svg'
 
 import { formatoMoneyBR } from 'utils'
 import styles from './ProductCard.module.scss'
+import { useEffect, useState } from 'react'
+import { CarrinhoType } from 'types/sistema'
 
-export default function ProductCard() {
+interface Props {
+    id: any,
+    title: string,
+    unityValue: number,
+    image: string,
+    information: string,
+    itemsCarrinho: CarrinhoType[]
+    setItemsCarrinho: any
+}
+
+export default function ProductCard(props: Props) {
+    const [deletando, setDeletando] = useState(false)
     function adicionar() {
         const bottomElements = document.querySelectorAll(`.${styles.bottom}`) as NodeListOf<HTMLElement>;
         bottomElements.forEach((element) => {
             element.style.transform = 'translateX(-50%)';
         });
+        const carrinhoAtualizado = [...props.itemsCarrinho];
+        carrinhoAtualizado.push({
+            id: props.id, title: props.title, image: props.image,
+            quantity: 1, unityValue: props.unityValue, value: props.unityValue
+        })
+        props.setItemsCarrinho(carrinhoAtualizado);
     }
 
     function remover() {
@@ -19,18 +38,35 @@ export default function ProductCard() {
         bottomElements.forEach((element) => {
             element.style.transform = 'translateX(0)';
         });
+        const carrinhoAtualizado = [...props.itemsCarrinho];
+        const index = props.itemsCarrinho.findIndex(objeto => objeto.id === props.id)
+        carrinhoAtualizado.splice(index, 1)
+        props.setItemsCarrinho(carrinhoAtualizado)
+        setDeletando(true)
     }
 
+    useEffect(() => {
+        if (props.itemsCarrinho.length > 0 || deletando) {
+            const itemsString = JSON.stringify(props.itemsCarrinho);
+            localStorage.setItem('items', itemsString);
+        }
+        if (props.itemsCarrinho.some(objeto => objeto.id === props.id)) {
+            const bottomElements = document.querySelectorAll(`.${styles.bottom}`) as NodeListOf<HTMLElement>;
+            bottomElements.forEach((element) => {
+                element.style.transform = 'translateX(-50%)';
+            });
+        }
+    }, [props.itemsCarrinho, deletando, props.id])
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-                <div className={styles.top}></div>
+                <img src={props.image} alt={`Imagem de ${props.title}`} className={styles.top} />
                 <div className={styles.bottom}>
                     <div className={styles.left}>
                         <div className={styles.details}>
-                            <h1>Cadeira</h1>
-                            <p>{formatoMoneyBR.format(250)}</p>
+                            <h1>{props.title}</h1>
+                            <p>{formatoMoneyBR.format(props.unityValue)}</p>
                         </div>
                         <div onClick={() => adicionar()} className={styles.buy}><img src={AddCarrinho} alt='Adicionar item ao Carrinho' /></div>
                     </div>
@@ -42,19 +78,16 @@ export default function ProductCard() {
                         <div onClick={() => remover()} className={styles.remove}><img src={RemoveCarrinho} alt='Remover item do Carrinho' /></div>
                     </div>
                 </div>
-
             </div>
             <div className={styles.inside}>
                 <div className={styles.icon}><img src={Info} alt='Informações' /></div>
                 <div className={styles.contents}>
                     <table>
                         <tr>
-                            <th>Largura</th>
-                            <th>Altura</th>
+                            <th>Informações:</th>
                         </tr>
                         <tr>
-                            <td>3000mm</td>
-                            <td>4000mm</td>
+                            <td>{props.information}</td>
                         </tr>
                     </table>
                 </div>
