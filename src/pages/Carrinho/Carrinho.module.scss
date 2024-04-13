@@ -30,6 +30,7 @@
     &__title {
         display: flex;
         flex-direction: row;
+        min-width: 55vw;
         width: 100%;
         align-items: center;
         justify-content: space-around;
@@ -93,7 +94,7 @@
         @media(max-width: $mobile) {
             text-wrap: wrap;
             font-size: small;
-            width: 50vw;
+            width: 30vw;
         }
     }
 
@@ -145,6 +146,14 @@
         }
     }
 
+    &__formulario {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
 
     @media(max-width: $tablet_big) {
         width: 100%;

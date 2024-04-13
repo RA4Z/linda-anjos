@@ -1,0 +1,45 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.inputBox input:focus~span, .inputBox input:not(:placeholder-shown) ~ span {
+    font-size: 0.7em;
+    transform: translate(14px, -50%);
+    padding: 0 5px;
+    border-radius: 2px;
+    background: #0C2D48;
+    letter-spacing: 0em;
+    border: 1px solid #4ba3eb;
+    color: white;
+    top: 0%;
+    left: 0px;
+}
+
+.status_projeto {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #4ba3eb;
+    filter: saturate(5);
+    font-size: 1em;
+    transition: .4s cubic-bezier(0.05, 0.81, 0, 0.93);
+    box-sizing: border-box;
+    width: calc(100px + 15vmin);
+    border-radius: 10px;
+    font-weight: bold;
+
+    &--power_bi {
+        color: #e8b613;
+    }
+
+    &--excel {
+        color: #1e6f42;
+    }
+
+    &--power_apps {
+        color: #912c88;
+    }
+
+    &--outros {
+        color: black;
+    }
+
+}

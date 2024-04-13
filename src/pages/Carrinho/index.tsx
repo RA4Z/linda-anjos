@@ -7,8 +7,11 @@ import styles from './Carrinho.module.scss'
 import SelectNumber from 'components/SelectNumber'
 import { formatoMoneyBR } from 'utils'
 import { useState } from 'react'
+import InputOption from 'components/InputOption'
+import Whatsapp from 'components/Whatsapp'
 
 export default function Carrinho() {
+    const [envio, setEnvio] = useState('Entrega')
     const [items, setItems] = useState([
         {
             image: IMG1,
@@ -30,28 +33,7 @@ export default function Carrinho() {
             quantity: 60,
             unityValue: 25,
             value: 1500,
-        },
-        {
-            image: IMG1,
-            title: 'Red Dead Redemption 2',
-            quantity: 1,
-            unityValue: 200,
-            value: 200,
-        },
-        {
-            image: IMG2,
-            title: 'Devil May Cry',
-            quantity: 6,
-            unityValue: 59,
-            value: 354,
-        },
-        {
-            image: IMG3,
-            title: 'Uncharted',
-            quantity: 60,
-            unityValue: 25,
-            value: 1500,
-        },
+        }
     ])
     return (
         <div className={styles.container}>
@@ -101,6 +83,17 @@ export default function Carrinho() {
                 <div className={styles.summary__resumo}>
                     <li>{items.length} {items.length > 1 ? 'itens' : 'item'}</li>
                     <li>{formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}</li>
+                </div>
+                <div className={styles.summary__formulario}>
+                    <InputOption dados={envio} setDados={setEnvio} />
+                    <Whatsapp
+                        message={`Olá, estou fazendo esse pedido a partir do Site!\n
+Segue abaixo meu pedido:\n
+${(items.map(item => `${item.title} x ${item.quantity} = ${formatoMoneyBR.format(item.value)}`)).join('\n')}\n
+O valor total será de ${formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}
+E no recebimento do pedido escolhi a opção ${envio}\n
+Muito obrigado!`}
+                    />
                 </div>
             </div>
         </div>

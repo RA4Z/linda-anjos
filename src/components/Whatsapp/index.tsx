@@ -1,8 +1,12 @@
 import styles from './Whatsapp.module.scss'
 import WhatsappIMG from 'assets/whatsapp.svg'
 
-export default function Whatsapp() {
-  const mensagem = encodeURIComponent('Mensagem default que está inserida no software brabo desenvolvido pelo RV Tech');
+interface Props {
+  message: string
+}
+
+export default function Whatsapp({ message }: Props) {
+  const mensagem = encodeURIComponent(message);
 
   const handleWhatsappButtonClick = () => {
     // Número de telefone ou link de convite do WhatsApp
@@ -18,7 +22,7 @@ export default function Whatsapp() {
   return (
     <div className={styles.button} onClick={handleWhatsappButtonClick}>
       <img src={WhatsappIMG} alt='Ícone do Whatsapp' />
-      <span>WhatsApp</span>
+      <span>Fazer pedido</span>
     </div>
   );
 }
