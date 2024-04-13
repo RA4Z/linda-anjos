@@ -19,7 +19,8 @@ export default function Header() {
             <ul>
                 <div className={styles.hamburguer}><Hamburguer /></div>
                 <li><a href='/'>Home</a></li>
-                <li><a href='/'>Catálogo</a></li>
+                <li><a href='/Catalogo'>Catálogo</a></li>
+                <li><a href='/Carrinho'>Carrinho</a></li>
                 <li><a href='/'>Contato</a></li>
                 <li><a href='/'>Sobre nós</a></li>
             </ul>

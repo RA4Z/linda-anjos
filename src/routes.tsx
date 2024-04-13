@@ -7,6 +7,7 @@ import DefaultPage from 'components/DefaultPage';
 const HomePage = lazy(() => import('pages/Homepage'))
 const NotFound = lazy(() => import('pages/NotFound'))
 const Carrinho = lazy(() => import('pages/Carrinho'))
+const Catalogo = lazy(() => import('pages/Catalogo'))
 const Login = lazy(() => import('pages/Login'))
 const Admin = lazy(() => import('pages/Admin'))
 
@@ -22,6 +23,7 @@ export default function AppRouter() {
               <Route index element={<HomePage />} />
               <Route path='/Admin' element={<Admin />} />
               <Route path='/Carrinho' element={<Carrinho />} />
+              <Route path='/Catalogo' element={<Catalogo />} />
               <Route path='/Login' element={<Login />} />
               <Route path='*' element={<NotFound />} />
             </Route>

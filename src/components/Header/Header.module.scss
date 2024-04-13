@@ -38,7 +38,7 @@
             display: none;
             padding-right: 15px;
 
-            @media(max-width:$mobile) {
+            @media(max-width:$tablet) {
                 display: block;
             }
         }
@@ -46,7 +46,7 @@
         li {
             list-style: none;
 
-            @media(max-width:$mobile) {
+            @media(max-width:$tablet) {
                 display: none;
             }
 

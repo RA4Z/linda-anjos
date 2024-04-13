@@ -6,35 +6,58 @@ import Fechar from 'assets/fechar.svg'
 import styles from './Carrinho.module.scss'
 import SelectNumber from 'components/SelectNumber'
 import { formatoMoneyBR } from 'utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import InputOption from 'components/InputOption'
 import Whatsapp from 'components/Whatsapp'
+import { CarrinhoType } from 'types/sistema'
 
 export default function Carrinho() {
     const [envio, setEnvio] = useState('Entrega')
-    const [items, setItems] = useState([
-        {
-            image: IMG1,
-            title: 'Red Dead Redemption 2',
-            quantity: 1,
-            unityValue: 200,
-            value: 200,
-        },
-        {
-            image: IMG2,
-            title: 'Devil May Cry',
-            quantity: 6,
-            unityValue: 59,
-            value: 354,
-        },
-        {
-            image: IMG3,
-            title: 'Uncharted',
-            quantity: 60,
-            unityValue: 25,
-            value: 1500,
+    const [items, setItems] = useState<CarrinhoType[]>([])
+    const [deletando, setDeletando] = useState(false)
+
+    function recuperar() {
+        setItems([
+            {
+                image: IMG1,
+                title: 'Red Dead Redemption 2',
+                quantity: 1,
+                unityValue: 200,
+                value: 200,
+            },
+            {
+                image: IMG2,
+                title: 'Devil May Cry',
+                quantity: 6,
+                unityValue: 59,
+                value: 354,
+            },
+            {
+                image: IMG3,
+                title: 'Uncharted',
+                quantity: 60,
+                unityValue: 25,
+                value: 1500,
+            }
+        ]);
+    }
+
+    useEffect(() => {
+        const info = localStorage.getItem('items');
+        if (info) {
+            const parsedInfo: CarrinhoType[] = JSON.parse(info);
+            setItems(parsedInfo);
         }
-    ])
+    }, []);
+
+    useEffect(() => {
+        if (items.length > 0 || deletando) {
+            const itemsString = JSON.stringify(items);
+            localStorage.setItem('items', itemsString);
+            setDeletando(false)
+        }
+    }, [items, deletando])
+
     return (
         <div className={styles.container}>
             <div className={styles.items}>
@@ -65,6 +88,7 @@ export default function Carrinho() {
                                 onClick={() => {
                                     const carrinho = [...items];
                                     carrinho.splice(index, 1); // Remove o item do carrinho
+                                    setDeletando(true)
                                     setItems(carrinho); // Atualiza o estado do carrinho
                                 }}
                             />
@@ -86,6 +110,7 @@ export default function Carrinho() {
                 </div>
                 <div className={styles.summary__formulario}>
                     <InputOption dados={envio} setDados={setEnvio} />
+                    <button onClick={() => recuperar()}>Recuperar itens</button>
                     <Whatsapp
                         message={`Olá, estou fazendo esse pedido a partir do Site!\n
 Segue abaixo meu pedido:\n
