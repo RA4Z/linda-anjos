@@ -5,6 +5,7 @@ import IMG3 from 'images/image3.jpg'
 import Fechar from 'assets/fechar.svg'
 import styles from './Carrinho.module.scss'
 import SelectNumber from 'components/SelectNumber'
+import { formatoMoneyBR } from 'utils'
 import { useState } from 'react'
 
 export default function Carrinho() {
@@ -77,7 +78,7 @@ export default function Carrinho() {
                                     setItems(updatedItems);
                                 }}
                             />
-                            <li style={{ width: '15%' }}>{item.value}R$</li>
+                            <li className={styles.item__value}>{formatoMoneyBR.format(item.value)}</li>
                             <img className={styles.item__delete} src={Fechar} alt='Excluir do carrinho'
                                 onClick={() => {
                                     const carrinho = [...items];
@@ -94,10 +95,13 @@ export default function Carrinho() {
             </div>
             <div className={styles.summary}>
                 <div className={styles.summary__title}>
-                    <h1>Summary</h1>
+                    <h1>Sumário</h1>
                 </div>
                 <Divider style={{ width: '100%' }} />
-
+                <div className={styles.summary__resumo}>
+                    <li>{items.length} {items.length > 1 ? 'itens' : 'item'}</li>
+                    <li>{formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}</li>
+                </div>
             </div>
         </div>
     )

@@ -80,13 +80,25 @@
         -webkit-line-clamp: 2;
 
         @media(max-width: $mobile) {
-            width: auto;
             font-size: small;
         }
     }
 
+    &__value {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+
+        @media(max-width: $mobile) {
+            text-wrap: wrap;
+            font-size: small;
+            width: 50vw;
+        }
+    }
+
     &__produto {
-        width: 10vw;
+        width: 8vw;
     }
 
     &__delete {
@@ -120,6 +132,19 @@
             color: $primary;
         }
     }
+
+    &__resumo {
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            list-style: none;
+            color: $secondary;
+        }
+    }
+
 
     @media(max-width: $tablet_big) {
         width: 100%;
