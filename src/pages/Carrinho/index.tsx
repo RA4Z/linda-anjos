@@ -77,7 +77,7 @@ export default function Carrinho() {
                                     setItems(updatedItems);
                                 }}
                             />
-                            <li style={{ width: '10%' }}>{item.value}R$</li>
+                            <li style={{ width: '15%' }}>{item.value}R$</li>
                             <img className={styles.item__delete} src={Fechar} alt='Excluir do carrinho'
                                 onClick={() => {
                                     const carrinho = [...items];

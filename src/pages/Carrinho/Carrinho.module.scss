@@ -99,8 +99,8 @@
         }
     }
 
-    @media(max-width: $tablet_big) {
-        width: 100%;
+    @media(max-width: $tablet) {
+        width: 100vw;
     }
 }
 
