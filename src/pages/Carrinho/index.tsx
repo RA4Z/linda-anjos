@@ -1,7 +1,4 @@
 import { Divider } from '@mui/material'
-import IMG1 from 'images/image1.jpg'
-import IMG2 from 'images/image2.jpg'
-import IMG3 from 'images/image3.jpg'
 import Fechar from 'assets/fechar.svg'
 import styles from './Carrinho.module.scss'
 import SelectNumber from 'components/SelectNumber'
@@ -15,35 +12,6 @@ export default function Carrinho() {
     const [envio, setEnvio] = useState('Entrega')
     const [items, setItems] = useState<CarrinhoType[]>([])
     const [deletando, setDeletando] = useState(false)
-
-    function recuperar() {
-        setItems([
-            {
-                id:1,
-                image: IMG1,
-                title: 'Red Dead Redemption 2',
-                quantity: 1,
-                unityValue: 200,
-                value: 200,
-            },
-            {
-                id:2,
-                image: IMG2,
-                title: 'Devil May Cry',
-                quantity: 6,
-                unityValue: 59,
-                value: 354,
-            },
-            {
-                id:3,
-                image: IMG3,
-                title: 'Uncharted',
-                quantity: 60,
-                unityValue: 25,
-                value: 1500,
-            }
-        ]);
-    }
 
     useEffect(() => {
         const info = localStorage.getItem('items');
@@ -112,7 +80,6 @@ export default function Carrinho() {
                     <li>{formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}</li>
                 </div>
                 <div className={styles.summary__formulario}>
-                    <button onClick={() => recuperar()}>Recuperar itens</button>
                     {items.length > 0 && <>
                         <InputOption dados={envio} setDados={setEnvio} />
                         <Whatsapp

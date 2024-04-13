@@ -7,6 +7,7 @@ import { formatoMoneyBR } from 'utils'
 import styles from './ProductCard.module.scss'
 import { useEffect, useState } from 'react'
 import { CarrinhoType } from 'types/sistema'
+import classNames from 'classnames'
 
 interface Props {
     id: any,
@@ -20,30 +21,32 @@ interface Props {
 
 export default function ProductCard(props: Props) {
     const [deletando, setDeletando] = useState(false)
-    function adicionar() {
-        const bottomElements = document.querySelectorAll(`.${styles.bottom}`) as NodeListOf<HTMLElement>;
-        bottomElements.forEach((element) => {
-            element.style.transform = 'translateX(-50%)';
-        });
+    const [selected, setSelected] = useState(false)
+
+    const adicionar = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const elementoAtual = event.currentTarget.parentElement?.parentElement;
+        if (elementoAtual) {
+            elementoAtual.style.transform = 'translateX(-50%)';
+        }
         const carrinhoAtualizado = [...props.itemsCarrinho];
         carrinhoAtualizado.push({
             id: props.id, title: props.title, image: props.image,
             quantity: 1, unityValue: props.unityValue, value: props.unityValue
         })
         props.setItemsCarrinho(carrinhoAtualizado);
-    }
+    };
 
-    function remover() {
-        const bottomElements = document.querySelectorAll(`.${styles.bottom}`) as NodeListOf<HTMLElement>;
-        bottomElements.forEach((element) => {
-            element.style.transform = 'translateX(0)';
-        });
+    const remover = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const elementoAtual = event.currentTarget.parentElement?.parentElement;
+        if (elementoAtual) {
+            elementoAtual.style.transform = 'none';
+        }
         const carrinhoAtualizado = [...props.itemsCarrinho];
         const index = props.itemsCarrinho.findIndex(objeto => objeto.id === props.id)
         carrinhoAtualizado.splice(index, 1)
         props.setItemsCarrinho(carrinhoAtualizado)
         setDeletando(true)
-    }
+    };
 
     useEffect(() => {
         if (props.itemsCarrinho.length > 0 || deletando) {
@@ -51,10 +54,7 @@ export default function ProductCard(props: Props) {
             localStorage.setItem('items', itemsString);
         }
         if (props.itemsCarrinho.some(objeto => objeto.id === props.id)) {
-            const bottomElements = document.querySelectorAll(`.${styles.bottom}`) as NodeListOf<HTMLElement>;
-            bottomElements.forEach((element) => {
-                element.style.transform = 'translateX(-50%)';
-            });
+            setSelected(true)
         }
     }, [props.itemsCarrinho, deletando, props.id])
 
@@ -62,20 +62,23 @@ export default function ProductCard(props: Props) {
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <img src={props.image} alt={`Imagem de ${props.title}`} className={styles.top} />
-                <div className={styles.bottom}>
+                <div className={classNames(
+                    styles.bottom,
+                    styles[`bottom${selected ? '--cart' : ''}`]
+                )}>
                     <div className={styles.left}>
                         <div className={styles.details}>
-                            <h1>{props.title}</h1>
+                            <li>{props.title}</li>
                             <p>{formatoMoneyBR.format(props.unityValue)}</p>
                         </div>
-                        <div onClick={() => adicionar()} className={styles.buy}><img src={AddCarrinho} alt='Adicionar item ao Carrinho' /></div>
+                        <div onClick={adicionar} className={styles.buy}><img src={AddCarrinho} alt='Adicionar item ao Carrinho' /></div>
                     </div>
                     <div className={styles.right}>
                         <div className={styles.done}><img src={Check} alt='Confirmado' /></div>
                         <div className={styles.details}>
                             <p>Item adicionado ao seu carrinho</p>
                         </div>
-                        <div onClick={() => remover()} className={styles.remove}><img src={RemoveCarrinho} alt='Remover item do Carrinho' /></div>
+                        <div onClick={remover} className={styles.remove}><img src={RemoveCarrinho} alt='Remover item do Carrinho' /></div>
                     </div>
                 </div>
             </div>
