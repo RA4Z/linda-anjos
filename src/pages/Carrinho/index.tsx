@@ -9,7 +9,7 @@ import Whatsapp from 'components/Whatsapp'
 import { CarrinhoType } from 'types/sistema'
 
 export default function Carrinho() {
-    const [envio, setEnvio] = useState('Entrega')
+    const [envio, setEnvio] = useState('')
     const [items, setItems] = useState<CarrinhoType[]>([])
     const [deletando, setDeletando] = useState(false)
 
@@ -81,20 +81,19 @@ export default function Carrinho() {
                         <li>{formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}</li>
                     </div>
                     <div className={styles.summary__formulario}>
-                        {items.length > 0 && <>
-                            <InputOption dados={envio} setDados={setEnvio} />
-                            <Whatsapp
-                                message={`Olá, estou fazendo esse pedido a partir do Site!\n
+                        <InputOption dados={envio} setDados={setEnvio} />
+                        {envio !== '' && <Whatsapp
+                            message={`Olá, estou fazendo esse pedido a partir do Site!\n
 Segue abaixo meu pedido:\n
 ${(items.map(item => `${item.title} x ${item.quantity} = ${formatoMoneyBR.format(item.value)}`)).join('\n')}\n
 O valor total será de ${formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}
 E no recebimento do pedido escolhi a opção ${envio}\n
 Muito obrigado!`}
-                            /></>}
+                        />}
                     </div>
                 </div>
             </> :
-                <div style={{ display: 'flex', justifyContent: 'center',width:'100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <h2 style={{ textAlign: 'center' }}>Não há itens no carrinho!</h2>
                 </div>}
         </div>
