@@ -24,7 +24,6 @@ export default function Hamburguer() {
                         <MenuItem onClick={() => { popupState.close(); navigate('/'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Home</MenuItem>
                         <MenuItem onClick={() => { popupState.close(); navigate('/Catalogo'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Catálogo</MenuItem>
                         <MenuItem onClick={() => { popupState.close(); navigate('/Carrinho'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Carrinho</MenuItem>
-                        <MenuItem onClick={() => { popupState.close(); navigate('/Contato'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Contato</MenuItem>
                         <MenuItem onClick={() => { popupState.close(); navigate('/Sobre'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Sobre nós</MenuItem>
                     </Menu>
                 </>
