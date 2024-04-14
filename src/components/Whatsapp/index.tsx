@@ -10,7 +10,7 @@ export default function Whatsapp({ message }: Props) {
 
   const handleWhatsappButtonClick = () => {
     // Número de telefone ou link de convite do WhatsApp
-    const numeroTelefone = '5547988292846'; // Substitua pelo número de telefone desejado
+    const numeroTelefone = '5547912345678'; // Substitua pelo número de telefone desejado
 
     // Criar o link do WhatsApp com a mensagem
     const linkWhatsapp = `https://wa.me/${numeroTelefone}?text=${mensagem}`;

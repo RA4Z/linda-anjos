@@ -43,11 +43,11 @@ export default function Footer() {
                 <div className={styles.container__dev}>
                     {user !== '' && <BotaoHover text='Deslogar' onClick={() => logout()} />}
 
-                    <button className={styles.container__button}>Default Webpage</button>
+                    <button className={styles.container__button}>Linda Anjos</button>
                     <Divider style={{ background: 'white' }} />
                     <div className={styles.container__icos}>
                         <a href='https://www.facebook.com'><img src={facebook} alt='Facebook' title='Nosso Facebook' className={styles.container__icos__icon} /></a>
-                        <a href='https://wa.me/5547988292846?text=Olá, estou entrando em contato pelo site!' target='_blank' rel="noreferrer"><img src={whatsapp} alt='Whatsapp' title='Nosso Whatsapp' className={styles.container__icos__icon} /></a>
+                        <a href='https://wa.me/5547912345678?text=Olá, estou entrando em contato pelo site!' target='_blank' rel="noreferrer"><img src={whatsapp} alt='Whatsapp' title='Nosso Whatsapp' className={styles.container__icos__icon} /></a>
                         <a href='https://www.instagram.com'><img src={instagram} alt='Instagram' title='Nosso Instagram' className={styles.container__icos__icon} /></a>
                         <a href='https://www.linkedin.com'><img src={linkedin} alt='LinkedIn' title='Nosso LinkedIn' className={styles.container__icos__icon} /></a>
                     </div>
@@ -58,8 +58,8 @@ export default function Footer() {
                         <Maps />
                     </div>
                     <li>Schroeder, Santa Catarina, Brasil</li>
-                    <li>Rua Marechal Castelo Branco</li>
-                    <li>4456, Centro Norte, CEP 89275-000</li>
+                    <li>Rua 17 de Fevereiro</li>
+                    <li>191, Centro Norte, CEP 89275-000</li>
                     <li>Ícones projetados por UIcons da Flaticon</li>
                 </div>
             </div>

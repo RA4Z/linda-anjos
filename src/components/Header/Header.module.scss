@@ -15,12 +15,22 @@
     backdrop-filter: blur(10px);
 
     button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
         background-color: transparent;
         border: none;
+
+        li {
+            list-style: none;
+            color: $primary;
+            font-weight: bold;
+            font-size: calc(7px + 3vmin);
+        }
     }
 
     img {
-        height: 68px;
+        height: calc(7px + 7vmin);
         cursor: pointer;
         transition: .2s;
 

@@ -1,15 +1,42 @@
 @import "styles/variables";
 @import "styles/breakpoints";
 
-.container {
+.corpo {
     min-height: 70vh;
+}
 
-    h2 {
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap-reverse;
+    gap: 5vw;
+    padding: 20px;
+
+    li {
+        list-style: none;
         text-align: center;
+        font-size: calc(10px + 3vmin);
     }
 }
 
-.carousel {
+.sonhos:after {
+    content: 'sonhos.';
+    color: $primary;
+}
+
+.titulo {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.carousel {
+    width: calc(100px + 50vmin);
+
+    h2,
+    h3 {
+        display: none;
+    }
 }

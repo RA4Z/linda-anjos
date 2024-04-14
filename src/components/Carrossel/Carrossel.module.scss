@@ -2,12 +2,9 @@
 @import "styles/breakpoints";
 
 .container {
-    width: 60%;
-
-    @media(max-width: $tablet) {
-        width: 100%;
-    }
+    width: 100%;
 }
+
 .item {
     padding-bottom: 20px;
 }

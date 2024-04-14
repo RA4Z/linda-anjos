@@ -1,5 +1,5 @@
 .menu {
-  --s: 30px;
+  --s: calc(7px + 5vmin);
   /* control the size */
   --c: black;
   /* the color */
