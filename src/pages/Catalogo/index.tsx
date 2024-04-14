@@ -2,9 +2,9 @@ import ProductCard from 'components/ProductCard';
 import { useEffect, useState } from 'react'
 import { CarrinhoType } from 'types/sistema'
 import styles from './Catalogo.module.scss'
-import IMG1 from 'images/image1.jpg'
-import IMG2 from 'images/image2.jpg'
-import IMG3 from 'images/image3.jpg'
+import IMG1 from 'images/imagemRDR.jpg'
+import IMG2 from 'images/imagemDMC.jpg'
+import IMG3 from 'images/imagemUncharted.jpg'
 
 export default function Catalogo() {
     const [items, setItems] = useState<CarrinhoType[]>([])
