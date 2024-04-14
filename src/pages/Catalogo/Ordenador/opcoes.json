@@ -1,0 +1,22 @@
+[
+    {
+      "nome": "",
+      "value": ""
+    },
+    {
+      "nome": "A-Z",
+      "value": "nomecrescente"
+    },
+    {
+      "nome": "Z-A",
+      "value": "nomedecrescente"
+    },
+    {
+      "nome": "Menor Valor",
+      "value": "precocrescente"
+    },
+    {
+      "nome": "Maior Valor",
+      "value": "precodecrescente"
+    }
+  ]

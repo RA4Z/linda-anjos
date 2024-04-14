@@ -8,3 +8,13 @@
     flex-wrap: wrap;
     gap: 10px;
 }
+
+.filterHeader {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 0 20px 0 20px;
+    width: 100%; 
+}
