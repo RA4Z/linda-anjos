@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { supabase } from 'config/supabase'
 import BotaoHover from 'components/BotaoHover'
+import Maps from 'components/Maps'
 
 export default function Footer() {
     const navigate = useNavigate()
@@ -50,7 +51,12 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.atribuicoes}>
-                    <p style={{ color: '#64CCC5' }}>Infomações extra:</p>
+                    <div className={styles.atribuicoes__maps}>
+                        <Maps />
+                    </div>
+                    <li>Schroeder, Santa Catarina, Brasil</li>
+                    <li>Rua Marechal Castelo Branco</li>
+                    <li>4456, Centro Norte, CEP 89275-000</li>
                 </div>
             </div>
             <div className={styles.creditos}><p>Default Webpage, projeto prototipado e desenvolvido por RV Tech rvtechny@gmail.com</p></div>

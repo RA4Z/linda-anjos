@@ -27,7 +27,7 @@
         }
     }
 
-    @media(max-width:550px) {
+    @media(max-width:$tablet) {
         flex-direction: column;
         gap: 20px;
     }
@@ -60,7 +60,7 @@
         align-items: center;
         gap: 5px;
 
-        @media(min-width:551px) {
+        @media(min-width:$tablet) {
             align-self: flex-end;
         }
     }
@@ -101,13 +101,34 @@
 }
 
 .atribuicoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__maps {
+        height: 200px;
+        width: 400px;
+        overflow: hidden;
+
+        button {
+            display: none;
+        }
+
+        li,
+        a {
+            color: $texto;
+            font-size: small;
+            text-align: end;
+        }
+
+        @media(max-width: $mobile) {
+            height: 40vh;
+            width: 100%;
+        }
+    }
+
     li {
         list-style-type: none;
-        cursor: pointer;
-        transition: .2s;
-
-        &:hover {
-            filter: saturate(2) drop-shadow(2px 2px 2px $shadow);
-        }
+        font-size: medium;
     }
 }
