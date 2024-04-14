@@ -9,26 +9,26 @@
 
     &__filtro {
         align-items: center;
-        background-color: $secondary;
-        border: none;
+        background-color: $backgrounds;
+        border: 1px solid $shadow;
         border-radius: 4px;
         display: flex;
         font-size: 1.25rem;
         font-weight: bold;
-        color: white;
+        color: $texto;
         height: 40px;
         justify-content: center;
         width: 150px;
         transition: .2s;
 
         &--ativo {
-            background-color: $primary;
+            background-color: $secondary;
             color: white;
         }
 
         &:hover {
             cursor: pointer;
-            filter: saturate(2) drop-shadow(2px 2px 2px $shadow);
+            filter: saturate(1) drop-shadow(2px 2px 2px $shadow);
         }
     }
 }
