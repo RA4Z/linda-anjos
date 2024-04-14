@@ -60,6 +60,7 @@ export default function Footer() {
                     <li>Schroeder, Santa Catarina, Brasil</li>
                     <li>Rua Marechal Castelo Branco</li>
                     <li>4456, Centro Norte, CEP 89275-000</li>
+                    <li>Ícones projetados por UIcons da Flaticon</li>
                 </div>
             </div>
             <div className={styles.creditos}><p>Default Webpage, projeto prototipado e desenvolvido por RV Tech rvtechny@gmail.com</p></div>
