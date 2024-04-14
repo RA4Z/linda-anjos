@@ -5,6 +5,7 @@ import styles from './Catalogo.module.scss'
 import { itens } from './itens';
 import Filtro from './Filtro';
 import Ordenador, { OpcoesOrdenador } from './Ordenador';
+import Buscador from './Buscador';
 
 export default function Catalogo() {
     const [items, setItems] = useState<CarrinhoType[]>([])
@@ -31,6 +32,11 @@ export default function Catalogo() {
     }
 
     useEffect(() => {
+        function testaBusca(title: string) {
+            const regex = new RegExp(busca, 'i');
+            return regex.test(title);
+        }
+
         function testaFiltro(category: string) {
             if (filtro !== '') return filtro === category;
             return true;
@@ -50,13 +56,17 @@ export default function Catalogo() {
             }
         }
 
-        const novosProdutos = itens.filter(item => testaFiltro(item.category))
+        const novosProdutos = itens.filter(item => testaBusca(item.title) &&
+            testaFiltro(item.category))
         setProdutos(novosProdutos)
         setProdutos(ordenar(novosProdutos))
-    }, [filtro, ordenador])
+    }, [filtro, ordenador, busca])
 
     return (
-        <div>
+        <div className={styles.corpo}>
+            <Buscador
+                busca={busca}
+                setBusca={setBusca} />
             <div className={styles.filterHeader}>
                 <Filtro filtro={filtro} setFiltro={setFiltro} />
                 <Ordenador ordenador={ordenador} setOrdenador={setOrdenador} />

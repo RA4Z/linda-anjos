@@ -13,10 +13,14 @@
     font-weight: bold;
     height: 40px;
     justify-content: space-between;
-    min-width: 240px;
+    min-width: 200px;
     padding: 0 40px;
     position: relative;
     z-index: 1;
+
+    @media(max-width:$mobile) {
+        min-width: 100%;
+    }
 
     &--ativo {
         background-color: $backgrounds;
