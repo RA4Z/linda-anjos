@@ -6,6 +6,7 @@ import { itens } from './itens';
 import Filtro from './Filtro';
 import Ordenador, { OpcoesOrdenador } from './Ordenador';
 import Buscador from './Buscador';
+import { Divider } from '@mui/material';
 
 export default function Catalogo() {
     const [items, setItems] = useState<CarrinhoType[]>([])
@@ -71,11 +72,14 @@ export default function Catalogo() {
                 <Filtro filtro={filtro} setFiltro={setFiltro} />
                 <Ordenador ordenador={ordenador} setOrdenador={setOrdenador} />
             </div>
-            <div className={styles.container}>
-                {produtos.map(produto => (
-                    <ProductCard {...produto} itemsCarrinho={items} setItemsCarrinho={setItems} />
-                ))}
-            </div>
+            <Divider />
+            {produtos.length > 0 ?
+                <div className={styles.container}>
+                    {produtos.map(produto => (
+                        <ProductCard {...produto} itemsCarrinho={items} setItemsCarrinho={setItems} />
+                    ))}
+                </div>
+                : <h2 style={{textAlign:'center'}}>Nenhum produto a ser exibido!</h2>}
         </div>
     )
 }
