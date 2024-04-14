@@ -29,13 +29,16 @@
         }
     }
 
-    img {
-        height: calc(7px + 7vmin);
+    button {
         cursor: pointer;
         transition: .2s;
 
+        img {
+            height: calc(7px + 7vmin);
+        }
+
         &:hover {
-            filter: saturate(2) drop-shadow(2px 2px 2px $shadow);
+            filter: saturate(1.5) drop-shadow(1px 1px 1px $shadow);
         }
     }
 
