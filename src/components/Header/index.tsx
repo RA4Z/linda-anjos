@@ -10,6 +10,11 @@ export default function Header() {
     function navigateHome() {
         if (location.pathname !== '/') navigate('/')
     }
+
+    function travelTo(pagina: string) {
+        if (location.pathname.toLowerCase() !== pagina.toLowerCase()) navigate(pagina)
+    }
+
     return (
         <nav className={styles.container}>
             <button onClick={() => navigateHome()} title='Navegar para a Homepage'>
@@ -18,11 +23,11 @@ export default function Header() {
 
             <ul>
                 <div className={styles.hamburguer}><Hamburguer /></div>
-                <li><a href='/'>Home</a></li>
-                <li><a href='/Catalogo'>Catálogo</a></li>
-                <li><a href='/Carrinho'>Carrinho</a></li>
-                <li><a href='/'>Contato</a></li>
-                <li><a href='/'>Sobre nós</a></li>
+                <li><button className={location.pathname.toLowerCase() === '/' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/')}>Home</button></li>
+                <li><button className={location.pathname.toLowerCase() === '/catalogo' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/Catalogo')}>Catálogo</button></li>
+                <li><button className={location.pathname.toLowerCase() === '/carrinho' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/Carrinho')}>Carrinho</button></li>
+                <li><button className={location.pathname.toLowerCase() === '/contato' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/Contato')}>Contato</button></li>
+                <li><button className={location.pathname.toLowerCase() === '/sobre' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/Sobre')}>Sobre nós</button></li>
             </ul>
         </nav>
     )

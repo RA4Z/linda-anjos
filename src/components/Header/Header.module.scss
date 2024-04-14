@@ -50,7 +50,23 @@
                 display: none;
             }
 
-            a {
+            .buttonBlock {
+                position: relative;
+                display: block;
+                text-transform: uppercase;
+                margin: 20px 0;
+                padding: 10px 20px;
+                text-decoration: none;
+                color: $texto;
+                font-family: sans-serif;
+                font-size: 18px;
+                font-weight: 600;
+                transition: .5s;
+                z-index: 1;
+            }
+
+            .buttonNav {
+                cursor: pointer;
                 position: relative;
                 display: block;
                 text-transform: uppercase;
