@@ -31,67 +31,72 @@ export default function Carrinho() {
 
     return (
         <div className={styles.container}>
-            <div className={styles.items}>
-                <div className={styles.items__title}>
-                    <h1>Carrinho de Compras</h1>
-                    <h4>{items.length} {items.length > 1 ? 'itens' : 'item'}</h4>
-                </div>
-                <Divider style={{ width: '100%' }} />
-                <div className={styles.items__container}>{items.map((item, index) => (
-                    <div key={index}>
-                        <div className={styles.item}>
-                            <div className={styles.item__principal}>
-                                <img className={styles.item__produto} src={item.image} alt='Imagem' />
-                                <li className={styles.item__title}>{item.title}</li>
-                            </div>
-                            <SelectNumber
-                                items={item}
-                                quantity={item.quantity}
-                                setQuantity={(newObject: any) => {
-                                    const updatedItems = [...items];
-                                    updatedItems[index].quantity = newObject.quantity;
-                                    updatedItems[index].value = Number(updatedItems[index].quantity) * Number(updatedItems[index].unityValue);
-                                    setItems(updatedItems);
-                                }}
-                            />
-                            <li className={styles.item__value}>{formatoMoneyBR.format(item.value)}</li>
-                            <img className={styles.item__delete} src={Fechar} alt='Excluir do carrinho'
-                                onClick={() => {
-                                    const carrinho = [...items];
-                                    carrinho.splice(index, 1); // Remove o item do carrinho
-                                    setDeletando(true)
-                                    setItems(carrinho); // Atualiza o estado do carrinho
-                                }}
-                            />
-                        </div>
-                        <Divider style={{ width: '100%' }} />
+            {items.length > 0 ? <>
+                <div className={styles.items}>
+                    <div className={styles.items__title}>
+                        <h1>Carrinho de Compras</h1>
+                        <h4>{items.length} {items.length > 1 ? 'itens' : 'item'}</h4>
                     </div>
-                ))}
+                    <Divider style={{ width: '100%' }} />
+                    <div className={styles.items__container}>{items.map((item, index) => (
+                        <div key={index}>
+                            <div className={styles.item}>
+                                <div className={styles.item__principal}>
+                                    <img className={styles.item__produto} src={item.image} alt='Imagem' />
+                                    <li className={styles.item__title}>{item.title}</li>
+                                </div>
+                                <SelectNumber
+                                    items={item}
+                                    quantity={item.quantity}
+                                    setQuantity={(newObject: any) => {
+                                        const updatedItems = [...items];
+                                        updatedItems[index].quantity = newObject.quantity;
+                                        updatedItems[index].value = Number(updatedItems[index].quantity) * Number(updatedItems[index].unityValue);
+                                        setItems(updatedItems);
+                                    }}
+                                />
+                                <li className={styles.item__value}>{formatoMoneyBR.format(item.value)}</li>
+                                <img className={styles.item__delete} src={Fechar} alt='Excluir do carrinho'
+                                    onClick={() => {
+                                        const carrinho = [...items];
+                                        carrinho.splice(index, 1); // Remove o item do carrinho
+                                        setDeletando(true)
+                                        setItems(carrinho); // Atualiza o estado do carrinho
+                                    }}
+                                />
+                            </div>
+                            <Divider style={{ width: '100%' }} />
+                        </div>
+                    ))}
 
+                    </div>
                 </div>
-            </div>
-            <div className={styles.summary}>
-                <div className={styles.summary__title}>
-                    <h1>Sumário</h1>
-                </div>
-                <Divider style={{ width: '100%' }} />
-                <div className={styles.summary__resumo}>
-                    <li>{items.length} {items.length > 1 ? 'itens' : 'item'}</li>
-                    <li>{formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}</li>
-                </div>
-                <div className={styles.summary__formulario}>
-                    {items.length > 0 && <>
-                        <InputOption dados={envio} setDados={setEnvio} />
-                        <Whatsapp
-                            message={`Olá, estou fazendo esse pedido a partir do Site!\n
+                <div className={styles.summary}>
+                    <div className={styles.summary__title}>
+                        <h1>Sumário</h1>
+                    </div>
+                    <Divider style={{ width: '100%' }} />
+                    <div className={styles.summary__resumo}>
+                        <li>{items.length} {items.length > 1 ? 'itens' : 'item'}</li>
+                        <li>{formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}</li>
+                    </div>
+                    <div className={styles.summary__formulario}>
+                        {items.length > 0 && <>
+                            <InputOption dados={envio} setDados={setEnvio} />
+                            <Whatsapp
+                                message={`Olá, estou fazendo esse pedido a partir do Site!\n
 Segue abaixo meu pedido:\n
 ${(items.map(item => `${item.title} x ${item.quantity} = ${formatoMoneyBR.format(item.value)}`)).join('\n')}\n
 O valor total será de ${formatoMoneyBR.format(items.reduce((total, item) => total + item.value, 0))}
 E no recebimento do pedido escolhi a opção ${envio}\n
 Muito obrigado!`}
-                        /></>}
+                            /></>}
+                    </div>
                 </div>
-            </div>
+            </> :
+                <div style={{ display: 'flex', justifyContent: 'center',width:'100%' }}>
+                    <h2 style={{ textAlign: 'center' }}>Não há itens no carrinho!</h2>
+                </div>}
         </div>
     )
 }
