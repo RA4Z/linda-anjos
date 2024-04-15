@@ -1,6 +1,7 @@
 import styles from './Homepage.module.scss'
 import Carrossel from 'components/Carrossel'
 import seta from 'assets/seta-para-cima-direita.svg'
+import Slogan from 'assets/Slogan.svg'
 import { useNavigate } from 'react-router-dom'
 
 export default function Homepage() {
@@ -9,8 +10,7 @@ export default function Homepage() {
         <div className={styles.corpo}>
             <div className={styles.container}>
                 <div className={styles.titulo}>
-                    <li>Criando idéias</li>
-                    <li className={styles.sonhos}>e estampando </li>
+                    <img src={Slogan} alt='Slogan' />
                     <button onClick={() => navigate('/Catalogo')}>
                         <label>Vamos lá!</label>
                         <img src={seta} alt='Seta para cima' />

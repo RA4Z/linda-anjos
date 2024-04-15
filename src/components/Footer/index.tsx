@@ -63,7 +63,7 @@ export default function Footer() {
                     <li>Ícones projetados por UIcons da Flaticon</li>
                 </div>
             </div>
-            <div className={styles.creditos}><p>Default Webpage, projeto prototipado e desenvolvido por RV Tech rvtechny@gmail.com</p></div>
+            <div className={styles.creditos}><p>Linda Anjos, projeto prototipado e desenvolvido por RV Tech rvtechny@gmail.com</p></div>
         </>
     )
 }
