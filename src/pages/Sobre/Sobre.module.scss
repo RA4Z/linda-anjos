@@ -1,0 +1,72 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 5vw;
+    padding: 20px;
+
+    img {
+        text-wrap: nowrap;
+        list-style: none;
+        text-align: center;
+        width: calc(20px + 50vmin);
+    }
+    button {
+        text-wrap: nowrap;
+    }
+}
+
+.sonhos:after {
+    content: 'sonhos.';
+    color: $primary;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    button {
+        width: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 50px;
+        align-self: center;
+        background-color: $primary;
+        cursor: pointer;
+        border: none;
+        border-radius: 30px;
+        padding: 15px 15px 15px 15px;
+        transition: .2s;
+
+        label {
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        img {
+            height: 20px;
+        }
+
+        &:hover {
+            filter: saturate(1.5) drop-shadow(2px 2px 2px $shadow);
+        }
+    }
+}
+
+.carousel {
+    width: calc(100px + 50vmin);
+
+    li {
+        font-size: calc(8px + 1.5vmin);
+        list-style: none;
+    }
+}
