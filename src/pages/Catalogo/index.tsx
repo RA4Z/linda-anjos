@@ -2,25 +2,30 @@ import ProductCard from 'components/ProductCard';
 import { useEffect, useState } from 'react'
 import { CarrinhoType, ItensType } from 'types/sistema'
 import styles from './Catalogo.module.scss'
-import { itens } from './itens';
 import Filtro from './Filtro';
 import Ordenador, { OpcoesOrdenador } from './Ordenador';
 import Buscador from './Buscador';
 import { Divider } from '@mui/material';
+import { getData } from 'services/table';
 
 export default function Catalogo() {
     const [items, setItems] = useState<CarrinhoType[]>([])
     const [filtro, setFiltro] = useState<string>('');
     const [busca, setBusca] = useState('');
-    const [produtos, setProdutos] = useState<ItensType[]>(itens)
+    const [produtos, setProdutos] = useState<ItensType[]>([])
+    const [itens, setItens] = useState<ItensType[]>([])
     const [ordenador, setOrdenador] = useState<OpcoesOrdenador>('');
 
     useEffect(() => {
+        async function coletarDados() {
+            await getData('Itens', setProdutos, setItens)
+        }
         const info = localStorage.getItem('items');
         if (info) {
             const parsedInfo: CarrinhoType[] = JSON.parse(info);
             setItems(parsedInfo);
         }
+        coletarDados()
     }, []);
 
 
@@ -61,7 +66,7 @@ export default function Catalogo() {
             testaFiltro(item.category))
         setProdutos(novosProdutos)
         setProdutos(ordenar(novosProdutos))
-    }, [filtro, ordenador, busca])
+    }, [filtro, ordenador, busca, itens])
 
     return (
         <div className={styles.corpo}>
@@ -79,7 +84,7 @@ export default function Catalogo() {
                         <ProductCard {...produto} itemsCarrinho={items} setItemsCarrinho={setItems} />
                     ))}
                 </div>
-                : <h2 style={{textAlign:'center'}}>Nenhum produto a ser exibido!</h2>}
+                : <h2 style={{ textAlign: 'center' }}>Nenhum produto a ser exibido!</h2>}
         </div>
     )
 }
