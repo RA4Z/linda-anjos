@@ -1,0 +1,44 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.deleteIcon {
+    display: flex;
+    border: none;
+    width: 100%;
+    justify-content: flex-start;
+
+    label {
+        color: darkred;
+        position: absolute;
+        cursor: pointer;
+        transition: .5s;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+.inputs {
+    display: flex;
+    justify-content: flex-end;
+
+    &__cancelar {
+        color: $secondary;
+        transition: .3s;
+
+        &:hover {
+            filter: saturate(2);
+        }
+    }
+
+    &__deletar {
+        color: darkred;
+        transition: .3s;
+
+        &:hover {
+            color: red;
+            filter: saturate(2);
+        }
+    }
+}

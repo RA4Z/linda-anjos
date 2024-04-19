@@ -17,3 +17,55 @@
     text-align: center;
     gap: 40px;
 }
+
+.lista {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    &__card {
+        border: 1px solid black;
+        padding: 5px;
+        width: 350px;
+
+        @media(max-width: $mobile) {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: large;
+        }
+
+        h3 {
+            font-size: medium;
+        }
+
+        img {
+            height: 100px;
+        }
+
+        &__header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        &__editIcon {
+            display: flex;
+            justify-content: flex-end;
+
+            label {
+                color: $secondary;
+                position: absolute;
+                cursor: pointer;
+                transition: .5s;
+        
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.export {
+    input[type="file"] {
+        display: none;
+    }
+
+    position: absolute;
+    transform: translate(150%, 100%);
+
+    label {
+        color: $secondary;
+        cursor: pointer;
+        transition: .5s;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
