@@ -7,6 +7,7 @@ import Ordenador, { OpcoesOrdenador } from './Ordenador';
 import Buscador from './Buscador';
 import { Divider } from '@mui/material';
 import { getData } from 'services/table';
+import { tablePath } from 'types/database';
 
 export default function Catalogo() {
     const [items, setItems] = useState<CarrinhoType[]>([])
@@ -18,7 +19,7 @@ export default function Catalogo() {
 
     useEffect(() => {
         async function coletarDados() {
-            await getData('Itens', setProdutos, setItens)
+            await getData(tablePath, setProdutos, setItens)
         }
         const info = localStorage.getItem('items');
         if (info) {

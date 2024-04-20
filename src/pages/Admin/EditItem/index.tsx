@@ -11,6 +11,7 @@ import InputBox from 'components/InputBox';
 import BotaoHover from 'components/BotaoHover';
 import { updateData } from 'services/table';
 import InputCurrency from 'components/InputCurrency';
+import { tablePath } from 'types/database';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -40,7 +41,7 @@ export default function EditItem(props: Props) {
 
     async function editarDados() {
         props.setLoading(true)
-        const response = await updateData('Itens', data.id, data)
+        const response = await updateData(tablePath, data.id, data)
         props.setLoading(false)
         if (response === 'success') {
             alert('Dados atualizados com sucesso!')
