@@ -3,11 +3,29 @@ import MenuItem from '@mui/material/MenuItem';
 import './styles.css'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { useNavigate } from 'react-router-dom';
+import { admMail } from 'types/database';
 
-export default function Hamburguer() {
+interface Props {
+    user?: string
+}
+
+export default function Hamburguer(props: Props) {
     const navigate = useNavigate()
+
+    async function close(popupState: any, path: string) {
+        await popupState.close();
+        navigate(path)
+        if (popupState.isOpen) {
+            setTimeout(function () {
+                popupState.close();
+            }, 100);
+        }
+        const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement;
+        menuHamburguer.checked = false
+    }
+
     return (
-        <PopupState variant="popover" popupId="demo-popup-menu">
+        <PopupState variant="popover" popupId="demo-popup-menu" >
             {(popupState) => (
                 <>
                     <input
@@ -21,10 +39,11 @@ export default function Hamburguer() {
                     />
 
                     <Menu {...bindMenu(popupState)} onClick={() => { popupState.close(); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>
-                        <MenuItem onClick={() => { popupState.close(); navigate('/'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Home</MenuItem>
-                        <MenuItem onClick={() => { popupState.close(); navigate('/Catalogo'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Catálogo</MenuItem>
-                        <MenuItem onClick={() => { popupState.close(); navigate('/Carrinho'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Carrinho</MenuItem>
-                        <MenuItem onClick={() => { popupState.close(); navigate('/Sobre'); const menuHamburguer = document.getElementById('menuHamburguer') as HTMLInputElement; menuHamburguer.checked = false }}>Sobre nós</MenuItem>
+                        {props.user === admMail && <MenuItem onClick={() => close(popupState, '/Admin')}>Administração</MenuItem>}
+                        <MenuItem onClick={() => close(popupState, '/')}>Home</MenuItem>
+                        <MenuItem onClick={() => close(popupState, '/Catalogo')}>Catálogo</MenuItem>
+                        <MenuItem onClick={() => close(popupState, '/Carrinho')}>Carrinho</MenuItem>
+                        <MenuItem onClick={() => close(popupState, '/Sobre')}>Sobre nós</MenuItem>
                     </Menu>
                 </>
             )}

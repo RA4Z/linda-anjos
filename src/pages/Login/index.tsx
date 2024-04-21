@@ -31,10 +31,12 @@ export default function Login() {
         setLoading(false)
         if (result === admMail) {
             navigate('/Admin')
+            window.location.reload()
         } else if (result === 'error') {
             alert('E-mail ou senha incorretos!')
         } else {
             navigate('/')
+            window.location.reload()
         }
     }
 

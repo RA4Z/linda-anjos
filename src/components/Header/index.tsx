@@ -2,10 +2,24 @@ import styles from './Header.module.scss'
 import Logotipo from 'assets/logo.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Hamburguer from './Hamburguer';
+import { memo, useEffect, useState } from 'react';
+import { supabase } from 'config/supabase';
+import { admMail } from 'types/database';
 
-export default function Header() {
+function Header() {
+    const [user, setUser] = useState('')
     const navigate = useNavigate()
     const location = useLocation();
+
+    useEffect(() => {
+        async function getUserLogged() {
+            const user = (await supabase.auth.getUser()).data.user?.email
+            if (user !== '' && user !== undefined) {
+                setUser(user)
+            }
+        }
+        getUserLogged()
+    }, [])
 
     function navigateHome() {
         if (location.pathname !== '/') navigate('/')
@@ -18,12 +32,12 @@ export default function Header() {
     return (
         <nav className={styles.container}>
             <button onClick={() => navigateHome()} title='Navegar para a Homepage'>
-                <li>Linda Anjos</li>
-                <img src={Logotipo} alt='Logotipo' />
+                <img src={Logotipo} alt='Logo da Weg' />
             </button>
 
             <ul>
-                <div className={styles.hamburguer}><Hamburguer /></div>
+                <div className={styles.hamburguer}><Hamburguer user={user} /></div>
+                {user === admMail && <li><button className={location.pathname.toLowerCase() === '/admin' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/admin')}>Admin</button></li>}
                 <li><button className={location.pathname.toLowerCase() === '/' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/')}>Home</button></li>
                 <li><button className={location.pathname.toLowerCase() === '/catalogo' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/Catalogo')}>Catálogo</button></li>
                 <li><button className={location.pathname.toLowerCase() === '/carrinho' ? styles.buttonBlock : styles.buttonNav} onClick={() => travelTo('/Carrinho')}>Carrinho</button></li>
@@ -32,3 +46,4 @@ export default function Header() {
         </nav>
     )
 }
+export default memo(Header)
