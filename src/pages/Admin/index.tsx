@@ -14,7 +14,7 @@ import EditItem from "./EditItem"
 import DeleteItem from "./DeleteItem"
 import Loading from "components/Loading"
 import InputCurrency from "components/InputCurrency"
-import { tablePath } from "types/database"
+import { admMail, tablePath } from "types/database"
 
 export default function Admin() {
     const navigate = useNavigate()
@@ -28,7 +28,11 @@ export default function Admin() {
             if (user === undefined) {
                 navigate('/Login')
             } else {
-                await getData(tablePath, setDados)
+                if(user === admMail) {
+                    await getData(tablePath, setDados)
+                } else {
+                    navigate('/')
+                }
             }
         }
         getUserLogged()

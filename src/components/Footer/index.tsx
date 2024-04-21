@@ -22,7 +22,7 @@ export default function Footer() {
         async function getUserLogged() {
             const user = (await supabase.auth.getUser()).data.user?.email
             if (user !== '' && user !== undefined) {
-                if (user === 'rvtech@tech.com') setUser(user)
+                setUser(user)
             }
         }
         getUserLogged()
