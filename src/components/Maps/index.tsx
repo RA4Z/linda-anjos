@@ -14,10 +14,10 @@ import Icon from 'ol/style/Icon';
 export default function Maps() {
     const mapContainer = useRef<HTMLDivElement>(null); // Defina o tipo da ref como HTMLDivElement
     const [map, setMap] = useState<Map | null>(null); // Defina o tipo do estado map como Map | null
-    
+   
     useEffect(() => {
         const iconFeature = new Feature({
-            geometry: new Point([-49.0805173, -26.3932913]),
+            geometry: new Point([-49.0844753, -26.3900064]),
             name: 'Linda Anjos',
             population: 4000,
             rainfall: 500,
@@ -51,7 +51,7 @@ export default function Maps() {
                 ],
                 view: new View({
                     projection: 'EPSG:4326',
-                    center: [-49.0805173, -26.3932913], // Converta as coordenadas para usar longitude e latitude
+                    center: [-49.0844753, -26.3900064], // Converta as coordenadas para usar longitude e latitude
                     zoom: 18, // Defina o nível de zoom
                 })
             });
