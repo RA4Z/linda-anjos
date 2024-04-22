@@ -32,7 +32,8 @@ function Header() {
     return (
         <nav className={styles.container}>
             <button onClick={() => navigateHome()} title='Navegar para a Homepage'>
-                <img src={Logotipo} alt='Logo da Weg' />
+                <li>Linda Anjos</li>
+                <img src={Logotipo} alt='Logo Linda Anjos' />
             </button>
 
             <ul>
