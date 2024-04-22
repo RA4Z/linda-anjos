@@ -1,10 +1,18 @@
 [
     {
-      "label": "Videogame",
+      "label": "Copo",
       "id": 1
     },
     {
-      "label": "Mobília",
+      "label": "Garrafa",
       "id": 2
+    },
+    {
+      "label": "Quadro",
+      "id": 3
+    },
+    {
+      "label": "Travesseiro",
+      "id": 4
     }
   ]
