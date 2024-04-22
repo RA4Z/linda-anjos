@@ -23,8 +23,9 @@
     }
 
     &--ativo {
-        background-color: $backgrounds;
-        color: $secondary;
+        border-color: #6aa6d8;
+        color: #5795c7;
+        background-color: #f0f8ff;
     }
 
     &__options {
@@ -53,9 +54,10 @@
 
         &:hover,
         &--ativo {
-            background-color: $secondary;
             cursor: pointer;
-            color: white;
+            border-color: #6aa6d8;
+            color: #5795c7;
+            background-color: #f0f8ff;
         }
     }
 }
