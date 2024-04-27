@@ -5,23 +5,33 @@ import styles from './Carrossel.module.scss'
 import IMG1 from 'images/image1.jpg'
 import IMG2 from 'images/image2.jpg'
 import IMG3 from 'images/image3.jpg'
+import IMG4 from 'images/image4.jpg'
+import IMG5 from 'images/image5.jpg'
+import IMG6 from 'images/image6.jpg'
+import IMG7 from 'images/image7.jpg'
 
 export default function Carrossel() {
     const slides = [
         {
-            title: 'Pôr do Sol',
-            subtitle: 'Sol se pondo ao fundo',
             image: IMG1
         },
         {
-            title: 'Empinada Cavalesca',
-            subtitle: 'Cavalando empinando as pernas',
             image: IMG2
         },
         {
-            title: 'Visualizando Cânion',
-            subtitle: 'Cânion com um rio em sua extensão',
             image: IMG3
+        },
+        {
+            image: IMG4
+        },
+        {
+            image: IMG5
+        },
+        {
+            image: IMG6
+        },
+        {
+            image: IMG7
         }
     ]
     return (
@@ -36,12 +46,10 @@ export default function Carrossel() {
                 emulateTouch={true}>
 
                 {slides.map(slide => (
-                    <div key={slide.title} className={styles.item}>
+                    <div key={slide.image} className={styles.item}>
                         <div>
-                            <img src={slide.image} alt={slide.title} />
+                            <img src={slide.image} alt={slide.image} />
                         </div>
-                        <h2>{slide.title}</h2>
-                        <h3>{slide.subtitle}</h3>
                     </div>
                 ))}
             </ReactCarousel>
